@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "MEPktY+2H2I=",
+  "success": true,
+  "projectFilePath": "/Users/brandon/Projects/RPG/RPG.csproj",
+  "expectedPackageFiles": [
+    "/Users/brandon/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "/Users/brandon/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
