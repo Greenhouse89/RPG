@@ -11,6 +11,7 @@ namespace RPG.Controllers
             new Character(),
             new Character {Id = 1, Name = "Sam"} 
         };
+
         [HttpGet] //responds to get requests
         [Route("GetAll")] //route to get all characters
         public ActionResult<List<Character>> Get() //return a list of characters when the api is called
@@ -22,6 +23,13 @@ namespace RPG.Controllers
         public ActionResult<Character> GetSingle(int id) //return a single character when the api is called
         {
             return Ok(characters.FirstOrDefault(c => c.Id == id)); //return the character with the id that matches the id in the api call. This defaults to the first one returned. 
+        }
+
+        [HttpPost] //responds to post requests. Sends the data to the service
+        public ActionResult<List<Character>> AddCharacter(Character newCharacter) //add a new character to the list
+        {
+            characters.Add(newCharacter); //add the new character to the list
+            return Ok(characters); //return the updated list
         }
     }
 }
