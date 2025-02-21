@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RPG.Models;
 namespace RPG.Services.CharacterService
 {
     public interface CharacterService : ICharacterService
@@ -11,22 +12,31 @@ namespace RPG.Services.CharacterService
             new Character(),
             new Character {Id = 1, Name = "Sam"} 
         };
-        public List<Character> AddCharacter(Character newCharacter)
+        public async Task<ServiceResponse<List<Character>>> AddCharacter(Character newCharacter)
         {
+            var serviceResponse = new ServiceResponse<List<Character>>();
             characters.Add(newCharacter);
-            return characters;
+            serviceResponse.Data = characters;
+            return serviceResponse;
             throw new System.NotImplementedException();
         } 
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
         {
-            return characters;
+            var serviceResponse = new ServiceResponse<List<Character>>();
+            return new ServiceResponse<List<Character>> 
+            {
+                Data = characters
+            };
             throw new System.NotImplementedException();
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int id)
         {
-            return characters.FirstOrDefault(c => c.Id == id);
+            var serviceResponse = new ServiceResponse<Character>();
+            var character = characters.FirstOrDefault(c => c.Id == id);
+            serviceResponse.Data = character;
+            return serviceResponse;
             throw new System.NotImplementedException();}
     }
 }
